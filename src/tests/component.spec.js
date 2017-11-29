@@ -12,7 +12,7 @@ describe('Check if component ReportText render text', () => {
       title: 'Kmom01 - Express',
       description: 'Vi skall bygga grunden till en applikations/webbplats med hjälp av ramverket Express.',
       text: 'test',
-    }
+    };
     const wrapper = mount(
       <ReportText report={report} />
     );

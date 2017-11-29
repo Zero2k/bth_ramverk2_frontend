@@ -8,6 +8,7 @@ import ViewReport from './ViewReport';
 import About from './About';
 import Login from './Login';
 import Signup from './Signup';
+import Loading from '../components/Loading';
 
 export default () => (
   <Router>
@@ -19,6 +20,7 @@ export default () => (
         <Route path="/about" exact component={About} />
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Signup} />
+        <Route path="/loading" exact component={Loading} />
       </Layout>
     </Switch>
   </Router>
