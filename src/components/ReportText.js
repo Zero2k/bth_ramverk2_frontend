@@ -12,6 +12,7 @@ const ReportText = ({ report }) => {
         <p style={{ fontSize: '1.20em' }}>
           {report.description}
         </p>
+        <p dangerouslySetInnerHTML={{__html: report.text}} />
         <Divider />
       </Container>
     </Root>
