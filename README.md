@@ -19,6 +19,9 @@ You will need:
 1. cd frontend
 2. yarn - install dependencies
 3. yarn start - start the frontend
+# Production
+(Change localhost to server ip in apollo.js or set it via env.SERVER_IP)
+4. yarn start:production
 
 - DOCKER
 # Development

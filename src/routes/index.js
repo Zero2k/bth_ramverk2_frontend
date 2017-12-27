@@ -6,6 +6,7 @@ import Home from './Home';
 import Report from './Report';
 import ViewReport from './ViewReport';
 import About from './About';
+import Socket from './Socket';
 import Login from './Login';
 import Signup from './Signup';
 import Loading from '../components/Loading';
@@ -18,6 +19,7 @@ export default () => (
         <Route path="/report/" exact component={Report} />
         <Route path="/report/:id" component={ViewReport} />
         <Route path="/about" exact component={About} />
+        <Route path="/socket" exact component={Socket} />
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/loading" exact component={Loading} />

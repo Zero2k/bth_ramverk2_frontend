@@ -6,14 +6,12 @@ const Root = styled.div`
   padding-top: 50%;
 `;
 
-const Loading = () => {
-  return (
-    <Root>
-      <Dimmer active inverted>
-        <Loader size='large' inverted>Loading</Loader>
-      </Dimmer>
-    </Root>
-  );
-};
+const Loading = () => (
+  <Root>
+    <Dimmer active inverted>
+      <Loader size='large' inverted>Loading</Loader>
+    </Dimmer>
+  </Root>
+);
 
 export default Loading;

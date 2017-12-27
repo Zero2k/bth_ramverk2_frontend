@@ -7,18 +7,16 @@ const Root = styled.div`
   padding-bottom: 25px;
 `;
 
-const Assignment = ({ report }) => {
-  return (
-    <Root>
-      <Container text>
-        <Header className='title' as='h3' style={{ fontSize: '2em' }}>{report.title}</Header>
-        <p style={{ fontSize: '0.9em' }}>
-          {report.description}
-        </p>
-        <Button as={Link} to={`/report/${report.id}`} basic>Read More</Button>
-      </Container>
-    </Root>
-  );
-};
+const Assignment = ({ report }) => (
+  <Root>
+    <Container text>
+      <Header className='title' as='h3' style={{ fontSize: '2em' }}>{report.title}</Header>
+      <p style={{ fontSize: '0.9em' }}>
+        {report.description}
+      </p>
+      <Button as={Link} to={`/report/${report.id}`} basic>Read More</Button>
+    </Container>
+  </Root>
+);
 
 export default Assignment;
