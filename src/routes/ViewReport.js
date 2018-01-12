@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ReportText from '../components/ReportText';
 
 import Loading from '../components/Loading';
-import { findReportQuery } from '../graphql/findReportQuery';
+import { findReportQuery } from '../graphql/report';
 
 const Root = styled.div`
   padding-top: 50px;
@@ -12,7 +12,7 @@ const Root = styled.div`
 `;
 
 const ViewReport = ({ data: { loading, singleReport } }) => {
-  if (loading) {
+  if (loading || !singleReport) {
     return <Loading />;
   }
 

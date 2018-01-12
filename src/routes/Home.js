@@ -10,7 +10,7 @@ import {
 
 import ListContainer from '../containers/ListContainer';
 import Loading from '../components/Loading';
-import { reportQuery } from '../graphql/getReport';
+import { reportQuery } from '../graphql/report';
 
 const Root = styled.div``;
 

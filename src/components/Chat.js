@@ -20,7 +20,7 @@ const Chat = ({ messages }) => (
           <Comment key={message.id}>
             <Comment.Avatar src='https://react.semantic-ui.com/assets/images/avatar/small/molly.png' />
             <Comment.Content>
-              <Comment.Author as='a'>{message.author}</Comment.Author>
+              <Comment.Author as='a'>{message.user}</Comment.Author>
               <Comment.Metadata>
                 <div>{message.date}</div>
               </Comment.Metadata>

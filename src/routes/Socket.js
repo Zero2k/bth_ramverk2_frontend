@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { Input, Button, Form, TextArea } from 'semantic-ui-react';
 
 import Chat from '../components/Chat';
+import constants from '../utils/constants';
 
-const socket = io('localhost:8080');
+const socket = io(`${constants.SERVER_IP}`);
 
 const Root = styled.div`
   padding-top: 50px;

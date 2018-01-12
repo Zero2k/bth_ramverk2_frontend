@@ -40,6 +40,7 @@ const Navbar = () => ({
             <NavLink to="/report">Reports</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/socket">Chat</NavLink>
+            <NavLink to="/todo">Todo</NavLink>
             <Menu.Item position='right'>
               <Button as={Link} to='/login'>Log in</Button>
               <Button as={Link} to='/signup' style={{ marginLeft: '0.5em' }}>Sign Up</Button>
