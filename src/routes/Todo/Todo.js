@@ -1,5 +1,6 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
+import { compose, graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { Header, Icon } from 'semantic-ui-react';
 
@@ -25,15 +26,28 @@ class Todo extends React.Component {
     };
   }
 
+  onSubmit = async (e) => {
+    e.preventDefault();
+    const { title, text } = this.state;
+
+    await this.props.mutate({ variables: { title, text } });
+    return this.setState({
+      title: '',
+      text: '',
+    });
+  };
+
   updateState = (e) => {
     console.log(e.target.name, ':', e.target.value);
     const state = this.state
     state[e.target.name] = e.target.value;
     this.setState(state);
-  }
+  };
+
 
   render() {
     const { data: { loading, allTodos } } = this.props;
+    const { title, text } = this.state;
 
     if (loading || !allTodos) {
       return <Loading />;
@@ -48,10 +62,29 @@ class Todo extends React.Component {
           </Header.Content>
         </Header>
         <List allTodos={allTodos} />
-        <Create updateState={this.updateState} />
+        <Create
+          title={title}
+          text={text}
+          updateState={this.updateState}
+          onSubmit={this.onSubmit}
+        />
       </Root>
     );
   }
 }
 
-export default graphql(allTodosQuery)(Todo);
+const addTodoMutation = gql`
+  mutation($title: String!, $text:String!) {
+    createTodo(title: $title, text: $text) {
+      title
+      text
+    }
+  }
+`;
+
+export default compose(
+  graphql(addTodoMutation),
+  graphql(allTodosQuery, {
+    options: { pollInterval: 5000 },
+  })
+)(Todo);

@@ -13,9 +13,7 @@ describe('Check if component ReportText render text', () => {
       description: 'Vi skall bygga grunden till en applikations/webbplats med hjälp av ramverket Express.',
       text: 'test',
     };
-    const wrapper = mount(
-      <ReportText report={report} />
-    );
+    const wrapper = mount(<ReportText report={report} />);
     const title = wrapper.find('h3');
     expect(title.text()).toBe('Kmom01 - Express');
   });

@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import styled from 'styled-components';
+import { Header, Icon } from 'semantic-ui-react';
 
 import Loading from '../../components/Loading';
 
@@ -16,7 +17,12 @@ const ViewTodo = () => {
 
   return (
     <Root>
-      <p>ViewTodo</p>
+      <Header as='h2' icon textAlign='center'>
+        <Icon name='list ul' circular />
+        <Header.Content>
+          View Todo
+        </Header.Content>
+      </Header>
     </Root>
   );
 };

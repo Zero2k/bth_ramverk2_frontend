@@ -30,7 +30,7 @@ class EditTodo extends React.Component {
         <Header as='h2' icon textAlign='center'>
           <Icon name='list ul' circular />
           <Header.Content>
-            EditTodo
+            Edit Todo
           </Header.Content>
         </Header>
       </Root>

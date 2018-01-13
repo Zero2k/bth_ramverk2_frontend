@@ -7,12 +7,18 @@ const Root = styled.div`
   padding-top: 10px;
 `;
 
-const AddTodo = ({ updateState }) => (
+const AddTodo = ({
+  updateState,
+  onSubmit,
+  title,
+  text
+}) => (
   <Root>
-    <Form>
+    <Form onSubmit={onSubmit}>
       <Form.Group widths='equal'>
         <Form.Field>
           <Input
+            value={title}
             onChange={updateState}
             name="title"
             fluid
@@ -22,6 +28,7 @@ const AddTodo = ({ updateState }) => (
       </Form.Group>
       <Form.Field>
         <Input
+          value={text}
           onChange={updateState}
           name="text"
           fluid
