@@ -1,6 +1,9 @@
 import React from 'react';
+import { graphql } from 'react-apollo';
 import styled from 'styled-components';
 import { Header, Icon } from 'semantic-ui-react';
+
+import { findSingleTodo } from '../../graphql/todos';
 
 const Root = styled.div`
   padding-top: 50px;
@@ -15,6 +18,7 @@ class EditTodo extends React.Component {
     this.state = {
       title: '',
       text: '',
+      active: '',
     };
   }
 
@@ -25,6 +29,8 @@ class EditTodo extends React.Component {
   }
 
   render() {
+    const { data: { singleTodo } } = this.props;
+
     return (
       <Root>
         <Header as='h2' icon textAlign='center'>
@@ -38,11 +44,10 @@ class EditTodo extends React.Component {
   }
 }
 
-export default EditTodo;
-/* export default graphql(findReportQuery, {
-  options: (props) => ({
+export default graphql(findSingleTodo, {
+  options: props => ({
     variables: {
       id: props.match.params.id,
     },
   })
-})(EditTodo); */
+})(EditTodo);

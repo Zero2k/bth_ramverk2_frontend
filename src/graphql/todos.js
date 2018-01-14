@@ -9,3 +9,14 @@ export const allTodosQuery = gql`
     }
   }
 `;
+
+export const findSingleTodo = gql`
+  query($id: ID!) {
+    singleTodo(_id: $id) {
+      _id
+      title
+      text
+      active
+    }
+  }
+`;

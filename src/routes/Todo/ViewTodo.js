@@ -1,37 +1,33 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import styled from 'styled-components';
-import { Header, Icon } from 'semantic-ui-react';
+
+import { findSingleTodo } from '../../graphql/todos';
 
 import Loading from '../../components/Loading';
+import View from '../../components/Todo/View';
 
 const Root = styled.div`
   padding-top: 50px;
   padding-bottom: 50px;
 `;
-let loading = false;
-const ViewTodo = () => {
-  if (loading) {
+
+const ViewTodo = ({ loading, data: { singleTodo } }) => {
+  if (loading || !singleTodo) {
     return <Loading />;
   }
 
   return (
     <Root>
-      <Header as='h2' icon textAlign='center'>
-        <Icon name='list ul' circular />
-        <Header.Content>
-          View Todo
-        </Header.Content>
-      </Header>
+      <View data={singleTodo} />
     </Root>
   );
 };
 
-export default ViewTodo;
-/* export default graphql(, {
-  options: (props) => ({
+export default graphql(findSingleTodo, {
+  options: props => ({
     variables: {
       id: props.match.params.id,
     },
   })
-})(ViewTodo); */
+})(ViewTodo);
