@@ -25,12 +25,12 @@ const ViewTodo = ({ data: { title, text, active } }) => (
         }
       </List.Item>
       <List.Item>
-        <List.Header style={{ fontSize: '20px' }}>Title</List.Header>
-        <p style={{ fontSize: '24px' }}>{title}</p>
+        <List.Header style={{ fontSize: '20px', color: '#4183c4' }}>Title</List.Header>
+        <p style={{ fontSize: '24px', paddingTop: '10px', paddingBottom: '10px' }}>{title}</p>
       </List.Item>
       <List.Item>
-        <List.Header style={{ fontSize: '20px' }}>Text</List.Header>
-        <p style={{ fontSize: '24px' }}>{text}</p>
+        <List.Header style={{ fontSize: '20px', color: '#4183c4' }}>Text</List.Header>
+        <p style={{ fontSize: '24px', paddingTop: '10px' }}>{text}</p>
       </List.Item>
     </List>
   </Root>

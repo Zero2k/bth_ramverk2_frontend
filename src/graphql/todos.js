@@ -6,6 +6,7 @@ export const allTodosQuery = gql`
       _id
       title
       text
+      active
     }
   }
 `;
