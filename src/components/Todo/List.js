@@ -6,7 +6,7 @@ import { List, Icon } from 'semantic-ui-react';
 const Root = styled.div`
 `;
 
-const Todo = ({ allTodos }) => (
+const Todo = ({ allTodos, deleteTodo }) => (
   <Root>
     {allTodos.map(item => (
       <List divided relaxed key={item._id} >
@@ -15,8 +15,9 @@ const Todo = ({ allTodos }) => (
             <Link key={`todo-${item._id}`} to={`/todo/edit/${item._id}`}>
               <Icon size='large' name='edit' />
             </Link>
+            <Icon size='large' name='delete' onClick={() => deleteTodo(item._id)} style={{ cursor: 'pointer', color: 'red' }} />
           </List.Content>
-          {console.log(item.active) || item.active ? <List.Icon name='checkmark' style={{ color: 'green' }} size='large' verticalAlign='middle' /> : <List.Icon name='dont' style={{ color: 'red' }} size='large' verticalAlign='middle' />}
+          {item.active ? <List.Icon name='checkmark' style={{ color: 'green' }} size='large' verticalAlign='middle' /> : <List.Icon name='dont' style={{ color: 'red' }} size='large' verticalAlign='middle' />}
           <List.Content>
             <List.Header as={Link} to={`/todo/view/${item._id}`} style={item.active ? { textDecoration: 'line-through' } : { textDecoration: 'none' }}>{item.title}</List.Header>
             <List.Description>{item.text}</List.Description>

@@ -30,7 +30,9 @@ class Todo extends React.Component {
     e.preventDefault();
     const { title, text } = this.state;
 
-    await this.props.mutate({ variables: { title, text } });
+    await this.props.mutate({
+      variables: { title, text }
+    });
     return this.setState({
       title: '',
       text: '',
@@ -38,10 +40,13 @@ class Todo extends React.Component {
   };
 
   updateState = (e) => {
-    console.log(e.target.name, ':', e.target.value);
-    const state = this.state
+    const state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
+  };
+
+  deleteTodo = async (id) => {
+    await this.props.mutate({ variables: { id } });
   };
 
 
@@ -61,7 +66,7 @@ class Todo extends React.Component {
             My Todo List
           </Header.Content>
         </Header>
-        <List allTodos={allTodos} />
+        <List allTodos={allTodos} deleteTodo={this.deleteTodo} />
         <Create
           title={title}
           text={text}
@@ -82,8 +87,17 @@ const addTodoMutation = gql`
   }
 `;
 
+const deleteTodoMutation = gql`
+  mutation($id: ID!) {
+    deleteTodo(_id: $id) {
+      message
+    }
+  }
+`;
+
 export default compose(
   graphql(addTodoMutation),
+  graphql(deleteTodoMutation),
   graphql(allTodosQuery, {
     options: { pollInterval: 5000 },
   })

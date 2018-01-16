@@ -2,7 +2,7 @@ import React from 'react';
 import { compose, graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
-import { Header, Icon, Form, Checkbox, Button } from 'semantic-ui-react';
+import { Header, Icon } from 'semantic-ui-react';
 
 import { findSingleTodo } from '../../graphql/todos';
 
@@ -23,13 +23,30 @@ class EditTodo extends React.Component {
       id: props.match.params.id,
       title: '',
       text: '',
-      active: false,
+      active: '',
     };
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { data: { loading, singleTodo } } = newProps;
+    if (!loading) {
+      const { title, text, active } = singleTodo;
+      this.setState({
+        title,
+        text,
+        active
+      });
+    }
   }
 
   onSubmit = async (e) => {
     e.preventDefault();
-    const { id, title, text, active } = this.state;
+    const {
+      id,
+      title,
+      text,
+      active
+    } = this.state;
 
     await this.props.mutate({
       variables: {
@@ -39,11 +56,7 @@ class EditTodo extends React.Component {
         active
       }
     });
-    return this.setState({
-      title: '',
-      text: '',
-      active: false,
-    });
+    this.props.history.push('/todo');
   };
 
   setCompleted = () => {
@@ -63,8 +76,6 @@ class EditTodo extends React.Component {
       return <Loading />;
     }
 
-    const { title, text, active } = singleTodo;
-
     return (
       <Root>
         <Header as='h2' icon textAlign='center'>
@@ -73,20 +84,12 @@ class EditTodo extends React.Component {
             Edit Todo
           </Header.Content>
         </Header>
-        <Form onSubmit={this.onSubmit}>
-          <Form.Field>
-            <label>Title</label>
-            <input placeholder='Enter title' name="title" defaultValue={title} onChange={this.updateState} />
-          </Form.Field>
-          <Form.Field>
-            <label>Text</label>
-            <input placeholder='Enter text' name="text" defaultValue={text} onChange={this.updateState} />
-          </Form.Field>
-          <Form.Field>
-            <Checkbox label='Completed' checked={active} onClick={this.setCompleted} />
-          </Form.Field>
-          <Button type='submit'>Save</Button>
-        </Form>
+        <Edit
+          onSubmit={this.onSubmit}
+          data={singleTodo}
+          updateState={this.updateState}
+          setCompleted={this.setCompleted}
+        />
       </Root>
     );
   }

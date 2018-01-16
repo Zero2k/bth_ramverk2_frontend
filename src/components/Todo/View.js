@@ -12,11 +12,10 @@ const ViewTodo = ({ data: { title, text, active } }) => (
   <Root>
     <List>
       <List.Item>
-        <List.Header>Completed?</List.Header>
         {active ?
           <Icon.Group size='huge'>
             <Icon size='big' name='thin circle' />
-            <Icon name='check' />
+            <Icon name='check' color='green' />
           </Icon.Group> :
           <Icon.Group size='huge'>
             <Icon size='big' color='red' name='dont' />
