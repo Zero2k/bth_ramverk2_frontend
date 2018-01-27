@@ -97,9 +97,7 @@ class EditTodo extends React.Component {
 
 const updateTodoMutation = gql`
   mutation($id: ID!, $title: String!, $text: String!, $active: Boolean!) {
-    updateTodo(_id: $id, title: $title, text: $text, active: $active) {
-      _id
-    }
+    updateTodo(_id: $id, title: $title, text: $text, active: $active)
   }
 `;
 
