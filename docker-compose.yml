@@ -12,6 +12,18 @@ services:
       - "3000:3000"
     command: "yarn start"
 
+  test:
+    image: "node:9"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "3000:3000"
+    command: "yarn test a"
+
   frontend:
     image: "node:9"
     user: "node"

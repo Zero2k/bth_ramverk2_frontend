@@ -7,21 +7,22 @@
 
 ## Dependencies
 
-You will need:
  * [node.js](https://nodejs.org/en/)
  * [react.js](https://reactjs.org/)
+ * [semantic-ui](https://react.semantic-ui.com/)
  * [docker](https://docs.docker.com/engine/installation/)
  * [docker-compose](https://docs.docker.com/compose/install/)
 
 ## To start the app
 ```bash
 - FRONTEND
-1. cd frontend
-2. yarn - install dependencies
-3. yarn start - start the frontend
+1. git clone https://github.com/Zero2k/bth_ramverk2_frontend frontend
+2. cd frontend
+3. yarn - install dependencies
+4. yarn start - start the frontend
 # Production
-(Change localhost to server ip in apollo.js or set it via env.SERVER_IP)
-4. yarn start:production
+(Change localhost to server ip in apollo.js)
+5. yarn start:production
 
 - DOCKER
 # Development
@@ -32,4 +33,20 @@ docker-compose up frontend
 
 ## Further documentation
 
-Coming Soon...
+### About
+
+All code in this repo is used to create my frontend for my so called "Me-page" for the course Ramverk2 at Blekinge Institute of Technology. The frontend is built with React.js, Semantic UI and Apollo-Client (GraphQL). 
+
+### Tests
+
+```bash
+TEST WITHOUT DOCKER
+
+yarn test - The command will run the tests located in /tests.
+```
+
+```bash
+TEST WITH DOCKER (require docker)
+
+yarn test:docker - This will run the tests in a Docker container.
+```
